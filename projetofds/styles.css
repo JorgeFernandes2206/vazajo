@@ -1,0 +1,143 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1c1c;
+    color: #f4f4f9;
+}
+
+header {
+    background-color: #444;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #f4d03f; /* Cor dourada */
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #f4d03f;
+}
+
+main {
+    padding: 20px;
+}
+
+.highlight {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    height: 200px; /* Altura ajustada para o retângulo */
+    margin: 20px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.highlight-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ajusta a largura da imagem ao contêiner */
+    height: 100%; /* Ajusta a altura da imagem ao contêiner */
+    object-fit: cover; /* Corta a imagem para preencher o espaço */
+    object-position: center; /* Centraliza a imagem dentro do contêiner */
+    z-index: 0;
+}
+
+.highlight h2 {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1;
+    font-size: 18px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #1c1c1c;
+    color: #f4f4f9;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Faz com que a página ocupe toda a altura da janela */
+}
+
+main {
+    flex-grow: 1; /* Faz com que o conteúdo principal ocupe o máximo de espaço disponível */
+    padding: 20px;
+    margin-bottom: 60px; /* Adiciona um espaço inferior para evitar que o footer cubra o conteúdo */
+}
+
+footer {
+    background-color: #333;
+    color: #f4f4f9;
+    text-align: center;
+    padding: 10px 0;
+    position: relative; /* Para que ele não fique fixo */
+}
+
+
+footer {
+    background-color: #333;
+    color: #f4f4f9;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilo adicional */
+h2 {
+    text-align: center;
+    color: #f4d03f;
+}
+
+p {
+    text-align: center;
+    line-height: 1.6;
+}
+
+.categories, .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.category, .contact-item {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, background-color 0.3s;
+    width: 200px;
+}
+
+.category:hover, .contact-item:hover {
+    transform: scale(1.05);
+    background-color: #555;
+}

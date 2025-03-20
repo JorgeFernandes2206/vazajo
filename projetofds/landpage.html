@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendador de Filmes</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #f4f4f9;
+        }
+        header {
+            background: linear-gradient(90deg, #f4d03f, #e3b81e);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+            color: #121212;
+        }
+        nav {
+            background-color: #333;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 5px;
+        }
+        nav a:hover {
+            background-color: #f4d03f;
+            color: #121212;
+            transform: scale(1.1);
+        }
+        main {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .highlight {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 400px;
+            background: url('banner_indy.jpg') no-repeat center center;
+            background-size: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+        .highlight::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .highlight h2 {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #f4f4f9;
+            font-size: 28px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .button {
+            background-color: #f4d03f;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: black;
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .button:hover {
+            background-color: #e3b81e;
+            transform: scale(1.1);
+        }
+        footer {
+            background-color: #333;
+            color: #f4f4f9;
+            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+        }
+
+        .search-container {
+            display: none;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .search-container input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 2px solid #f4d03f;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #f4d03f;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .search-container button:hover {
+            background-color: #e3b81e;
+        }
+
+        .search-results {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .movie-card {
+            background-color: #1c1c1c;
+            width: 220px;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            color: #f4f4f9;
+            text-align: center;
+        }
+
+        .movie-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .movie-card h3 {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .search-results a {
+            color: white; 
+            text-decoration: none; 
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vazajo</h1>
+    </header>
+    <nav>
+        <a href="landpage.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="perfil.php" class="active">Perfil</a>
+    </nav>
+    <main>
+        <div class="highlight">
+            <a href="destacado.html">
+                <h2>Indiana Jones</h2>
+            </a>
+        </div>
+        <div class="buttons">
+            <a href="recomendacao.html" class="button">Recomendação de Filmes</a>
+            <a href="#" class="button" id="searchBtn">Pesquisar</a>
+        </div>
+
+        <div class="search-container" id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Digite o nome do filme...">
+            <button id="searchButton">Buscar</button>
+        </div>
+
+        <div class="search-results" id="searchResults"></div>
+    </main>
+    <script>
+        // Exibe a barra de pesquisa quando o botão "Pesquisar" é clicado
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            document.getElementById('searchContainer').style.display = 'block';
+        });
+
+        // Função para buscar filmes na API da OMDB
+        document.getElementById('searchButton').addEventListener('click', function() {
+            let movieTitle = document.getElementById('searchInput').value;
+            if (movieTitle) {
+                fetch(`http://www.omdbapi.com/?s=${movieTitle}&apikey=80e3772e`)
+                    .then(response => response.json())
+                    .then(data => {
+                        let resultsContainer = document.getElementById('searchResults');
+                        resultsContainer.innerHTML = '';
+
+                        if (data.Response === "True") {
+                            data.Search.forEach(movie => {
+                                let movieCard = document.createElement('div');
+                                movieCard.classList.add('movie-card');
+                                
+                                movieCard.innerHTML = `  
+                                <a href="detalhes.php?i=${movie.imdbID}">
+                                    <img src="${movie.Poster}" alt="${movie.Title}">
+                                    <h3>${movie.Title}</h3>
+                                    <p>${movie.Year}</p>
+                                </a>
+                                `;
+                                resultsContainer.appendChild(movieCard);
+                            });
+                        } else {
+                            resultsContainer.innerHTML = '<p>Sem resultados para sua pesquisa.</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar filmes:', error);
+                    });
+            } else {
+                alert("Por favor, digite o nome de um filme.");
+            }
+        });
+    </script>
+</body>
+</html>

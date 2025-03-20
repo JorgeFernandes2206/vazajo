@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; 
+            color: #f4f4f9; 
+        }
+
+        header {
+            background: linear-gradient(90deg, #f4d03f, #e3b81e); 
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+            color: #121212;
+        }
+
+        nav {
+            background-color: #333; 
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 15px;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: #f4d03f; 
+            color: #121212;
+            transform: scale(1.1);
+        }
+
+        main {
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #f4d03f;
+        }
+
+        .section-content {
+            width: 100%;
+            max-width: 800px;
+            text-align: justify;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .team-list {
+            list-style-type: none;
+            padding: 0;
+            font-size: 18px;
+        }
+
+        .team-list li {
+            margin: 8px 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: #f4f4f9;
+            text-align: center;
+            padding: 15px 0;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sobre o Vazajo</h1>
+    </header>
+
+    <nav>
+        <a href="landpage.html">Início</a>
+        <a href="perfil.php">Perfil</a>
+    </nav>
+
+    <main>
+        <div class="highlight">
+            <h2>Recomendador de Filmes</h2>
+        </div>
+
+        <section>
+            <p class="section-content">O Recomendador de Filmes foi desenvolvido com o intuito de proporcionar aos utilizadores uma experiência personalizada ao buscar filmes para assistir. O sistema faz recomendações baseadas em categorias e preferências individuais, tornando a escolha mais fácil e divertida.</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Equipa</h2>
+            <p class="section-content">O projeto foi idealizado e executado pelos seguintes membros da equipa:</p>
+            <ul class="team-list">
+                <li><strong>Jorge Fernandes</strong></li>
+                <li><strong>José Ribeiro</strong></li>
+                <li><strong>Vasco Nunes</strong></li>
+                <li><strong>Adrian Santos</strong></li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

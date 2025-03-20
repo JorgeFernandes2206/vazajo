@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registar - Recomendador de Filmes</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: #1c1c1c; 
+            color: #f4f4f9;
+            justify-content: center;
+            align-items: center;
+        }
+        .register-container {
+            background-color: #333; 
+            padding: 40px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .register-container h2 {
+            color: #f4d03f; 
+            margin-bottom: 20px;
+        }
+        .register-container input[type="text"],
+        .register-container input[type="password"],
+        .register-container input[type="email"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #444; 
+            background-color: #222; 
+            color: #f4f4f9; 
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .register-container input::placeholder {
+            color: #aaa;
+        }
+        .register-container button {
+            background-color: #f4d03f; 
+            color: #1c1c1c; 
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .register-container button:hover {
+            background-color: #e3b81e; 
+        }
+        a {
+            color: #f4d03f; 
+            text-decoration: none;
+            font-size: 14px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registar Conta</h2>
+        <form action="registrar.php" method="POST">
+            <input type="text" name="username" placeholder="Nome de Utilizador" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="password" name="password" placeholder="Palavra - Passe" required>
+            <input type="password" name="confirm_password" placeholder="Confirmar Palavra - Passe" required>
+            <button type="submit">Registar</button>
+        </form>
+        <p>Já tem uma conta? <a href="index.html">Login</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmes de Indiana Jones</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #f4f4f9;
+        }
+        header {
+            background: linear-gradient(90deg, #f4d03f, #e3b81e);
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+            color: #121212;
+        }
+        nav {
+            background-color: #333;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 15px;
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        .movie-card {
+            background-color: #1c1c1c;
+            width: 220px;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            color: #f4f4f9;
+            text-align: center;
+            margin: 10px;
+            display: inline-block;
+        }
+        .movie-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .movie-card h3 {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .movie-card p {
+            font-size: 14px;
+            color: #f4f4f9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Filmes de Indiana Jones</h1>
+    </header>
+    <nav>
+        <a href="landpage.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="perfil.php">Perfil</a>
+    </nav>
+    <main id="moviesContainer">
+    </main>
+
+    <script>
+        // Função para carregar os filmes da franquia Indiana Jones usando a API OMDB
+        window.onload = function() {
+            const moviesContainer = document.getElementById('moviesContainer');
+            const movieTitles = [
+                'Indiana Jones and the Raiders of the Lost Ark',
+                'Indiana Jones and the Temple of Doom',
+                'Indiana Jones and the Last Crusade',
+                'Indiana Jones and the Kingdom of the Crystal Skull'
+            ];
+
+            movieTitles.forEach(title => {
+                fetch(`http://www.omdbapi.com/?t=${encodeURIComponent(title)}&apikey=80e3772e`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.Response === "True") {
+                            const movieCard = document.createElement('div');
+                            movieCard.classList.add('movie-card');
+                            movieCard.innerHTML = `
+                                <img src="${data.Poster}" alt="${data.Title}">
+                                <h3>${data.Title}</h3>
+                                <p>${data.Year}</p>
+                                <p>${data.Genre}</p>
+                            `;
+                            moviesContainer.appendChild(movieCard);
+                        } else {
+                            console.error(`Erro ao carregar o filme: ${title}`);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar filmes:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
